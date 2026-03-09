@@ -1,41 +1,188 @@
-# DevOps Portfolio Project
+# AI-Assisted DevOps Platform
 
-## Overview
+This project demonstrates how **Artificial Intelligence can assist
+DevOps engineers** by automating monitoring, incident detection,
+root-cause analysis, and remediation in a Kubernetes environment.
 
-This portfolio project demonstrates various aspects of DevOps practices through a comprehensive setup involving application development, CI/CD pipelines, cloud-based infrastructure, microservices, GitOps, logging, and monitoring.
+The platform combines:
 
-### Repositories
+-   Kubernetes infrastructure
+-   Observability stack (Prometheus + Elasticsearch + Kibana)
+-   Automated remediation engine
+-   AI reasoning agents
+-   Security monitoring
 
-1. **Application** (`app`): Contains the application code written in Python (Flask), with a REST API interacting with a MongoDB database.
-2. **GitOps Configuration** (`gitops`): Holds the GitOps setup using Argo CD for continuous deployment.
-3. **Infrastructure** (`infra`): Manages the cloud infrastructure using Terraform, including Kubernetes provisioning and networking.
+The goal is to evolve traditional DevOps automation into **AI-driven
+DevOps (AI-Ops)**.
 
-## Architecture
+------------------------------------------------------------------------
 
-The project follows a microservice-based architecture deployed on AWS using EKS for Kubernetes orchestration. The infrastructure is managed through Terraform, ensuring a consistent and reproducible setup. The application is containerized using Docker and follows a GitOps approach for deployments.
+# Architecture Overview
 
-![Architecture Diagram](gitops/images/Full_architecture.png)
+Infrastructure and applications generate metrics and logs which are
+collected by the observability stack. A rule engine detects known
+incidents and performs automated remediation. Unknown issues are
+analyzed by AI agents.
 
-## Technology Stack
+    Infrastructure + Applications
+            |
+            v
+    Observability Stack
+    (Prometheus + ELK)
+            |
+            v
+    Detection Engine
+    (Rule Engine)
+            |
+      +-----+-----+
+      |           |
+      v           v
+    Known Issue   Unknown Issue
+    Auto Fix      AI Analysis
 
-- **Terraform:** For provisioning and managing infrastructure as code.
-- **AWS:** For hosting the infrastructure, including VPC, EC2, EKS, ECR, S3, IAM, Secrets and related services.
-- **Kubernetes:** For orchestrating containerized applications.
-- **Helm:** For managing Kubernetes applications using Helm charts.
-- **ArgoCD:** For implementing GitOps-based continuous deployment.
-- **GitLab:** For version control and CI/CD pipeline management.
-- **Python (Flask):** For development, including building REST APIs.
-- **Docker:** For containerizing applications.
-- **Jenkins:** For continuous integration and deployment pipelines.
-- **MongoDB:** For database management.
-- **Nginx Ingress Controller:** For managing inbound traffic to the Kubernetes cluster.
-- **EFK Stack:** For centralized logging using Elasticsearch, Fluentd, and Kibana.
-- **Prometheus and Grafana:** For monitoring and observability of the infrastructure and applications.
+------------------------------------------------------------------------
 
-## Documentation
+# AI Agents in the System
 
-Each repository includes a `README.md` file with detailed documentation about its purpose, setup, and detailed structure.
+## Monitoring Agent
 
-## Contact
+Responsibilities:
 
-For any questions or suggestions, feel free to reach out.
+-   Collect metrics from Prometheus
+-   Collect logs from Elasticsearch
+-   Monitor Kubernetes cluster state
+-   Detect anomalies
+
+Inputs:
+
+-   Node metrics
+-   Container metrics
+-   Application logs
+-   Kubernetes events
+
+Outputs:
+
+-   Incident detection signals
+
+------------------------------------------------------------------------
+
+## Incident Analysis Agent
+
+This agent performs **AI-powered root cause analysis**.
+
+Responsibilities:
+
+-   Analyze logs and metrics
+-   Correlate events across systems
+-   Identify root cause
+-   Suggest remediation
+
+Example:
+
+    Root Cause: Database connection pool exhausted
+
+    Suggested Fix:
+    1. Restart API deployment
+    2. Investigate database latency
+
+------------------------------------------------------------------------
+
+## Remediation Agent
+
+Performs automated recovery actions.
+
+Safe automated actions:
+
+-   Restart failed pods
+-   Restart deployments
+-   Scale deployments
+-   Cleanup logs
+-   Restart DNS services
+
+------------------------------------------------------------------------
+
+## Security Agent
+
+Detects and responds to attacks.
+
+Capabilities:
+
+-   Detect brute force login attempts
+-   Detect suspicious API traffic
+-   Detect SQL injection patterns
+-   Detect abnormal request spikes
+
+Response actions:
+
+-   Block malicious IPs
+-   Generate security alerts
+-   Notify engineers
+
+------------------------------------------------------------------------
+
+# AI-Ops Workflow
+
+    Cluster Monitoring
+            |
+            v
+    Incident Detection
+            |
+            v
+    Rule Engine
+            |
+      +-----+------
+      |           |
+      v           v
+    Known Issue   Unknown Issue
+    Auto Fix      AI Analysis
+            |
+            v
+    Incident Resolved
+
+------------------------------------------------------------------------
+
+# Project Directory Structure
+
+    AI-Assisted-DevOps-Project
+    |
+    |-- app
+    |   |-- backend
+    |   |-- frontend
+    |
+    |-- infra
+    |
+    |-- gitops
+    |   |-- infra-apps
+    |
+    |-- ai-ops
+    |   |-- agent
+    |   |-- collectors
+    |   |-- remediation
+    |   |-- knowledge
+    |   |-- config
+    |   |-- llm
+    |
+    |-- monitoring
+
+------------------------------------------------------------------------
+
+# Technologies Used
+
+Infrastructure - Kubernetes - Docker - Terraform
+
+Observability - Prometheus - Elasticsearch - Kibana
+
+AI / Automation - Python - AI Agents - Rule Engine - LLM Integration
+(ChatGPT / Claude)
+
+------------------------------------------------------------------------
+
+# Future Enhancements
+
+Planned improvements:
+
+-   LangChain-based incident reasoning
+-   Multi-agent orchestration
+-   AI-driven runbook generation
+-   AI anomaly detection
+-   Automated capacity planning
