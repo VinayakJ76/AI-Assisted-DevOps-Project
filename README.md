@@ -39,7 +39,7 @@ analyzed by AI agents.
       v           v
     Known Issue   Unknown Issue
     Auto Fix      AI Analysis
-
+![Architecture Diagram](gitops/images/Full_architecture.png)
 ------------------------------------------------------------------------
 
 # AI Agents in the System
